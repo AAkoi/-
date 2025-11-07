@@ -1,6 +1,6 @@
 ---
 title: "阅读Betaflight源码笔记"
-description: "深入研究Betaflight飞控固件的架构和关键代码"
+description: "简述Betaflight初始化部分"
 pubDate: "2025-10-26"
 categories:
   - 嵌入式开发
