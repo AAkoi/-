@@ -19,7 +19,7 @@ import MainCard from "@/components/MainCard.astro";
           <!-- 左侧封面图 -->
           <figure class="md:w-80 md:flex-shrink-0">
             <img 
-              src="/image/project/fpga_ad936x/2D_PCB_Top.png" 
+              src="/image/project/fpga_ad936x/2D_PCB_Top_img.png" 
               alt="PCB Top View" 
               class="w-full h-48 md:h-full object-cover"
             />
@@ -56,28 +56,29 @@ import MainCard from "@/components/MainCard.astro";
               </div>
             </div>
 
-            <div class="flex gap-2">
-              <a href="#schematics" class="btn btn-sm btn-primary">
-                查看设计详情
-              </a>
-            </div>
           </div>
         </div>
       </article>
 
-      <!-- 设计文件详情 -->
-      <section id="schematics" class="space-y-6">
-        <div class="divider">
-          <h2 class="text-2xl font-bold">设计文件</h2>
-        </div>
+      <!-- 设计文件详情 - 可折叠 -->
+      <div class="collapse collapse-arrow bg-base-200">
+        <input type="checkbox" id="design-details" />
+        <label for="design-details" class="collapse-title text-xl font-bold cursor-pointer">
+          <div class="flex items-center gap-2">
+            <Icon name="lucide:folder-open" class="w-6 h-6 text-primary" />
+            <span>查看设计详情</span>
+          </div>
+        </label>
+        <div class="collapse-content">
+          <section class="space-y-6 pt-4">
 
-        <!-- 原理图设计 -->
-        <div class="card bg-base-200">
-          <div class="card-body">
-            <h3 class="card-title text-xl flex items-center gap-2">
-              <Icon name="lucide:file-text" class="w-6 h-6 text-primary" />
-              原理图设计
-            </h3>
+            <!-- 原理图设计 -->
+            <div class="card bg-base-100">
+              <div class="card-body">
+                <h3 class="card-title text-xl flex items-center gap-2">
+                  <Icon name="lucide:file-text" class="w-6 h-6 text-primary" />
+                  原理图设计
+                </h3>
             <div class="space-y-8 pt-4">
               <div>
                 <h4 class="text-lg font-semibold mb-3 flex items-center gap-2">
@@ -126,17 +127,16 @@ import MainCard from "@/components/MainCard.astro";
                 </h4>
                 <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_7-MIPI_2025-11-07.png" alt="MIPI" class="w-full rounded-lg border shadow-lg" />
               </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- PCB 设计 -->
-        <div class="card bg-base-200">
-          <div class="card-body">
-            <h3 class="card-title text-xl flex items-center gap-2">
-              <Icon name="lucide:layers" class="w-6 h-6 text-primary" />
-              PCB 设计
-            </h3>
+            <!-- PCB 设计 -->
+            <div class="card bg-base-100">
+              <div class="card-body">
+                <h3 class="card-title text-xl flex items-center gap-2">
+                  <Icon name="lucide:layers" class="w-6 h-6 text-primary" />
+                  PCB 设计
+                </h3>
             <div class="space-y-8 pt-4">
               <div>
                 <h4 class="text-lg font-semibold mb-3">PCB 顶层视图</h4>
@@ -147,32 +147,32 @@ import MainCard from "@/components/MainCard.astro";
                 <h4 class="text-lg font-semibold mb-3">PCB 底层视图</h4>
                 <img src="/image/project/fpga_ad936x/2D_PCB_Bottom.png" alt="PCB Bottom" class="w-full rounded-lg border shadow-lg" />
               </div>
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- 设计思维导图 -->
-        <div class="card bg-base-200">
-          <div class="card-body">
-            <h3 class="card-title text-xl flex items-center gap-2">
-              <Icon name="lucide:git-branch" class="w-6 h-6 text-primary" />
-              设计思维导图
-            </h3>
+            <!-- 设计思维导图 -->
+            <div class="card bg-base-100">
+              <div class="card-body">
+                <h3 class="card-title text-xl flex items-center gap-2">
+                  <Icon name="lucide:git-branch" class="w-6 h-6 text-primary" />
+                  设计思维导图
+                </h3>
             <div class="pt-4">
               <img src="/image/project/fpga_ad936x/Structuredflowchart.png" alt="Flow Chart" class="w-full rounded-lg border shadow-lg" />
+              </div>
             </div>
-          </div>
-        </div>
 
-        <!-- 项目状态 -->
-        <div class="alert bg-primary/10 text-primary">
-          <Icon name="lucide:info" class="w-6 h-6" />
-          <div>
-            <p class="font-bold">项目状态：设计阶段</p>
-            <p class="text-sm">硬件设计已完成，正在进行 PCB 制作和固件开发。</p>
-          </div>
+            <!-- 项目状态 -->
+            <div class="alert bg-primary/10 text-primary">
+              <Icon name="lucide:info" class="w-6 h-6" />
+              <div>
+                <p class="font-bold">项目状态：设计阶段</p>
+                <p class="text-sm">硬件设计已完成，正在进行 PCB 制作和固件开发。</p>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
 
       <!-- GitHub 链接 -->
       <div class="text-center pt-8">
