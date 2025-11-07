@@ -21,13 +21,13 @@ tags:
 
 下方通过IIC或者SCCB协议进行摄像头寄存器配置。
 
-<img src="https://gitee.com/blueaoi/yyyyy/raw/master/img/CSI摄像头框图.png"/>
+![CSI摄像头框图](/image/blog_mipicsi/CSI摄像头框图.png)
 
 D-PHY：就是一种PHY（**PHYsical Layer**）物理层，负责将数字信号转换为PCB上的电信号进行传输。
 
 它包含了 SLVS (high-speed)差分对 和 LVCMOS (low-power)差分对。
 
-<img src="https://gitee.com/blueaoi/yyyyy/raw/master/img/SLVS电平.png"/>
+![SLVS电平](/image/blog_mipicsi/SLVS电平.png)
 
 我们关注的是HS（高速模式）下的共模电压V~CMTX~=200mV 和 差模电压|V~OD~|。下面举个简单例子来了解差模、共模和逻辑'1'、'0'：
 
@@ -51,15 +51,15 @@ D-PHY：就是一种PHY（**PHYsical Layer**）物理层，负责将数字信号
 
 作为LVDS发射端，它最上方有VDD，下面跟着一个IS=3.5mA的恒流源，为单线提供了VCCO/2的偏置。
 
-<img src="https://gitee.com/blueaoi/yyyyy/raw/master/img/LVDS发射端.png"/>
+![LVDS发射端](/image/blog_mipicsi/LVDS发射端.png)
 
 接收端就比较简单了，就是一个差分放大器，所以对共模噪声有很强的抑制能力，==但是！！！！！！==输入的信号有一个共模电压范围要求，这个共模电压最小值在使用100欧姆终端电阻的情况下是300mV（见下方图三）
 
 在7系列FPGA的HR bank中可以自己选择开启或者关闭R~TERM~，在HP bank中只能选择外接一个100欧姆或者更高阻值的电阻（后文会讲到，这是兼容的关键！）
 
-<img src="https://gitee.com/blueaoi/yyyyy/raw/master/img/LVDS接收端.png" style="zoom:150%;" />
+![LVDS接收端](/image/blog_mipicsi/LVDS接收端.png)
 
-<img src="https://gitee.com/blueaoi/yyyyy/raw/master/img/LVDS电平.png"/>
+![LVDS电平](/image/blog_mipicsi/LVDS电平.png)
 
 引用文献中提到：'The LVDS receiver in the FPGA can lower the common mode voltage to 300 mV when using the internal on-die termination resistors. When using external termination resistors, the common mode voltage can drop to 100 mV.'
 
@@ -69,11 +69,11 @@ D-PHY：就是一种PHY（**PHYsical Layer**）物理层，负责将数字信号
 
 对于我项目中的IMX219和OV5647摄像头，这个速度已经能够流畅支持70fps的1080p画质视频了！！
 
-<img src="https://gitee.com/blueaoi/yyyyy/raw/master/img/低成本电阻网络兼容FPGA_DPHY方法.png"/>
+![低成本电阻网络兼容FPGA_DPHY方法](/image/blog_mipicsi/低成本电阻网络兼容FPGA_DPHY方法.png)
 
 好消息是我刚好有bank13是空闲的，作为摄像头的bank，正好可以使用LVDS_25标准！！
 
-<img src="https://gitee.com/blueaoi/yyyyy/raw/master/img/HR bank LVDS25.png"/>
+![HR bank LVDS25](/image/blog_mipicsi/HR%20bank%20LVDS25.png)
 
 [1]: https://docs.amd.com/v/u/en-US/xapp894-d-phy-solutions	"xapp894"
 
