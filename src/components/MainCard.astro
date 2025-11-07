@@ -35,7 +35,7 @@ const accessibleHelpText = `${helpText}: ${title}`;
     image ? (
       // With image - show image with overlay title
       <div class="relative">
-        <div class="aspect-video w-full overflow-hidden">
+        <div class="aspect-video w-full overflow-hidden bg-base-300">
           <Image
             src={image}
             alt={title}
@@ -43,7 +43,7 @@ const accessibleHelpText = `${helpText}: ${title}`;
             height={630}
             format="webp"
             loading="eager"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-contain"
           />
         </div>
 
