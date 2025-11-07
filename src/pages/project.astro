@@ -12,118 +12,160 @@ import MainCard from "@/components/MainCard.astro";
     infoIcon="lucide:code-2"
     image="/image/background/project.png"
   >
-    <div class="space-y-8">
-      <!-- FPGA AD936x SDR 项目 -->
-      <section>
-        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-          <Icon name="lucide:cpu" class="w-6 h-6 text-primary" />
-          <span>FPGA AD936x SDR 开发板</span>
-        </h2>
-
-        <!-- 项目封面 -->
-        <div class="card bg-base-200 overflow-hidden mb-6">
-          <figure>
-            <img src="/image/project/fpga_ad936x/2D_PCB_Top.png" alt="PCB Top View" class="w-full" />
+    <div class="space-y-6">
+      <!-- FPGA AD936x SDR 项目卡片 -->
+      <article class="card bg-base-200 overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="md:flex">
+          <!-- 左侧封面图 -->
+          <figure class="md:w-80 md:flex-shrink-0">
+            <img 
+              src="/image/project/fpga_ad936x/2D_PCB_Top.png" 
+              alt="PCB Top View" 
+              class="w-full h-48 md:h-full object-cover"
+            />
           </figure>
-        </div>
 
-        <!-- 项目描述 -->
-        <div class="card bg-base-200 p-6 mb-6">
-          <h3 class="text-xl font-bold mb-4">项目简介</h3>
-          <div class="space-y-3 text-base-content/80">
-            <p>
+          <!-- 右侧内容 -->
+          <div class="p-6 flex-1">
+            <div class="flex items-start gap-3 mb-3">
+              <div class="badge badge-primary">硬件设计</div>
+              <div class="badge badge-outline">进行中</div>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-3 flex items-center gap-2">
+              <Icon name="lucide:cpu" class="w-6 h-6 text-primary" />
+              FPGA AD936x SDR 开发板
+            </h2>
+
+            <p class="text-base-content/70 mb-4">
               基于 Zynq7020 SoC 和 AD9361 射频芯片的软件定义无线电（SDR）开发板项目。
             </p>
-            <p>
-              <strong>核心特性：</strong>
-            </p>
-            <ul class="list-disc list-inside space-y-2 ml-4">
-              <li>处理器：Xilinx Zynq7020 SoC（双核 ARM Cortex-A9 + FPGA）</li>
-              <li>射频芯片：AD9361（70MHz - 6GHz 带宽）</li>
-              <li>存储：DDR3 内存、QSPI Flash</li>
-              <li>接口：千兆以太网、USB OTG、MIPI CSI 摄像头</li>
-              <li>外设：TF 卡槽、JTAG 调试接口</li>
-            </ul>
+
+            <div class="space-y-2 text-sm text-base-content/80 mb-4">
+              <div class="flex items-center gap-2">
+                <Icon name="lucide:chip" class="w-4 h-4 text-primary" />
+                <span>Xilinx Zynq7020 SoC（双核 ARM Cortex-A9 + FPGA）</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <Icon name="lucide:radio" class="w-4 h-4 text-primary" />
+                <span>AD9361 射频芯片（70MHz - 6GHz 带宽）</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <Icon name="lucide:network" class="w-4 h-4 text-primary" />
+                <span>千兆以太网、USB OTG、MIPI CSI 摄像头</span>
+              </div>
+            </div>
+
+            <div class="flex gap-2">
+              <a href="#schematics" class="btn btn-sm btn-primary">
+                查看设计详情
+              </a>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 设计文件详情 -->
+      <section id="schematics" class="space-y-6">
+        <div class="divider">
+          <h2 class="text-2xl font-bold">设计文件</h2>
+        </div>
+
+        <!-- 原理图设计 -->
+        <div class="card bg-base-200">
+          <div class="card-body">
+            <h3 class="card-title text-xl flex items-center gap-2">
+              <Icon name="lucide:file-text" class="w-6 h-6 text-primary" />
+              原理图设计
+            </h3>
+            <div class="space-y-8 pt-4">
+              <div>
+                <h4 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:cpu" class="w-5 h-5" />
+                  XC7020 核心模块
+                </h4>
+                <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_2-XC7020_2025-11-07.png" alt="XC7020" class="w-full rounded-lg border shadow-lg" />
+              </div>
+              
+              <div>
+                <h4 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:zap" class="w-5 h-5" />
+                  电源设计
+                </h4>
+                <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_3-POWER_2025-11-07.png" alt="Power" class="w-full rounded-lg border shadow-lg" />
+              </div>
+              
+              <div>
+                <h4 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:radio" class="w-5 h-5" />
+                  AD9361 射频模块
+                </h4>
+                <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_4-AD9361_2025-11-07.png" alt="AD9361" class="w-full rounded-lg border shadow-lg" />
+              </div>
+              
+              <div>
+                <h4 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:network" class="w-5 h-5" />
+                  网络接口
+                </h4>
+                <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_5-NET_2025-11-07.png" alt="Network" class="w-full rounded-lg border shadow-lg" />
+              </div>
+              
+              <div>
+                <h4 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:plug" class="w-5 h-5" />
+                  外设接口
+                </h4>
+                <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_6-Peripheral_2025-11-07.png" alt="Peripheral" class="w-full rounded-lg border shadow-lg" />
+              </div>
+              
+              <div>
+                <h4 class="text-lg font-semibold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:camera" class="w-5 h-5" />
+                  MIPI 摄像头接口
+                </h4>
+                <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_7-MIPI_2025-11-07.png" alt="MIPI" class="w-full rounded-lg border shadow-lg" />
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- 设计文件 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <!-- 原理图 -->
-          <div class="collapse collapse-arrow bg-base-200">
-            <input type="checkbox" />
-            <div class="collapse-title text-lg font-bold flex items-center gap-2">
-              <Icon name="lucide:file-text" class="w-5 h-5 text-primary" />
-              原理图设计
-            </div>
-            <div class="collapse-content">
-              <div class="space-y-4 pt-4">
-                <div class="space-y-2">
-                  <h4 class="font-semibold">XC7020 核心模块</h4>
-                  <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_2-XC7020_2025-11-07.png" alt="XC7020" class="w-full rounded-lg border" />
-                </div>
-                <div class="space-y-2">
-                  <h4 class="font-semibold">电源设计</h4>
-                  <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_3-POWER_2025-11-07.png" alt="Power" class="w-full rounded-lg border" />
-                </div>
-                <div class="space-y-2">
-                  <h4 class="font-semibold">AD9361 射频模块</h4>
-                  <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_4-AD9361_2025-11-07.png" alt="AD9361" class="w-full rounded-lg border" />
-                </div>
-                <div class="space-y-2">
-                  <h4 class="font-semibold">网络接口</h4>
-                  <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_5-NET_2025-11-07.png" alt="Network" class="w-full rounded-lg border" />
-                </div>
-                <div class="space-y-2">
-                  <h4 class="font-semibold">外设接口</h4>
-                  <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_6-Peripheral_2025-11-07.png" alt="Peripheral" class="w-full rounded-lg border" />
-                </div>
-                <div class="space-y-2">
-                  <h4 class="font-semibold">MIPI 摄像头接口</h4>
-                  <img src="/image/project/fpga_ad936x/SCH_ZYNQ7020_1_7-MIPI_2025-11-07.png" alt="MIPI" class="w-full rounded-lg border" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- PCB 设计 -->
-          <div class="collapse collapse-arrow bg-base-200">
-            <input type="checkbox" />
-            <div class="collapse-title text-lg font-bold flex items-center gap-2">
-              <Icon name="lucide:layers" class="w-5 h-5 text-primary" />
+        <!-- PCB 设计 -->
+        <div class="card bg-base-200">
+          <div class="card-body">
+            <h3 class="card-title text-xl flex items-center gap-2">
+              <Icon name="lucide:layers" class="w-6 h-6 text-primary" />
               PCB 设计
-            </div>
-            <div class="collapse-content">
-              <div class="space-y-4 pt-4">
-                <div class="space-y-2">
-                  <h4 class="font-semibold">PCB 顶层</h4>
-                  <img src="/image/project/fpga_ad936x/2D_PCB_Top.png" alt="PCB Top" class="w-full rounded-lg border" />
-                </div>
-                <div class="space-y-2">
-                  <h4 class="font-semibold">PCB 底层</h4>
-                  <img src="/image/project/fpga_ad936x/2D_PCB_Bottom.png" alt="PCB Bottom" class="w-full rounded-lg border" />
-                </div>
+            </h3>
+            <div class="space-y-8 pt-4">
+              <div>
+                <h4 class="text-lg font-semibold mb-3">PCB 顶层视图</h4>
+                <img src="/image/project/fpga_ad936x/2D_PCB_Top.png" alt="PCB Top" class="w-full rounded-lg border shadow-lg" />
+              </div>
+              
+              <div>
+                <h4 class="text-lg font-semibold mb-3">PCB 底层视图</h4>
+                <img src="/image/project/fpga_ad936x/2D_PCB_Bottom.png" alt="PCB Bottom" class="w-full rounded-lg border shadow-lg" />
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- 设计思路 -->
-          <div class="collapse collapse-arrow bg-base-200 md:col-span-2">
-            <input type="checkbox" />
-            <div class="collapse-title text-lg font-bold flex items-center gap-2">
-              <Icon name="lucide:git-branch" class="w-5 h-5 text-primary" />
+        <!-- 设计思维导图 -->
+        <div class="card bg-base-200">
+          <div class="card-body">
+            <h3 class="card-title text-xl flex items-center gap-2">
+              <Icon name="lucide:git-branch" class="w-6 h-6 text-primary" />
               设计思维导图
-            </div>
-            <div class="collapse-content">
-              <div class="pt-4">
-                <img src="/image/project/fpga_ad936x/Structuredflowchart.png" alt="Flow Chart" class="w-full rounded-lg border" />
-              </div>
+            </h3>
+            <div class="pt-4">
+              <img src="/image/project/fpga_ad936x/Structuredflowchart.png" alt="Flow Chart" class="w-full rounded-lg border shadow-lg" />
             </div>
           </div>
         </div>
 
         <!-- 项目状态 -->
-        <div class="alert bg-primary/10 text-primary mt-6">
+        <div class="alert bg-primary/10 text-primary">
           <Icon name="lucide:info" class="w-6 h-6" />
           <div>
             <p class="font-bold">项目状态：设计阶段</p>
