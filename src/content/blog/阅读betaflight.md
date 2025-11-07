@@ -3,7 +3,7 @@ title: "阅读Betaflight源码笔记"
 description: "简述Betaflight初始化部分"
 pubDate: "2025-10-26"
 categories:
-  - 嵌入式开发
+  - 笔记
 tags:
   - Betaflight
   - 飞控

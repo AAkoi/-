@@ -3,7 +3,7 @@ title: "低成本电阻网络兼容FPGA D-PHY的简要概括"
 description: "详细介绍MIPI CSI接口中D-PHY物理层在7系列FPGA上的兼容性解决方案"
 pubDate: "2025-10-01"
 categories:
-  - 硬件设计
+  - 笔记
 tags:
   - FPGA
   - MIPI
