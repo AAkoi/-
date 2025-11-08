@@ -12,59 +12,62 @@ import MainCard from "@/components/MainCard.astro";
     infoIcon="lucide:code-2"
     image="/image/background/project.webp"
   >
-    <div class="space-y-6">
-      <!-- FPGA AD936x SDR 项目卡片 -->
+    <div class="space-y-8">
+      
+      <!-- ========== FPGA AD936x SDR 项目 (2025-05-12) ========== -->
       <article class="card bg-base-200 overflow-hidden hover:shadow-xl transition-shadow">
-        <div class="md:flex">
-          <!-- 左侧封面图 -->
-          <figure class="md:w-80 md:flex-shrink-0">
-            <img 
-              src="/image/project/fpga_ad936x/2D_PCB_Top_img.webp" 
-              alt="PCB Top View" 
-              class="w-full h-48 md:h-full object-cover"
-              loading="eager"
-            />
-          </figure>
+          <div class="md:flex">
+            <figure class="md:w-64 md:flex-shrink-0">
+              <img 
+                src="/image/project/fpga_ad936x/2D_PCB_Top_img.webp" 
+                alt="FPGA AD936x SDR" 
+                class="w-full h-48 md:h-full object-cover"
+                loading="eager"
+              />
+            </figure>
 
-          <!-- 右侧内容 -->
-          <div class="p-6 flex-1">
-            <div class="flex items-start gap-3 mb-3">
-              <div class="badge badge-primary">硬件设计</div>
-              <div class="badge badge-outline">进行中</div>
+            <div class="p-6 flex-1">
+              <div class="flex items-start gap-3 mb-3">
+                <div class="badge badge-primary">硬件设计</div>
+                <div class="badge badge-outline">进行中</div>
+                <div class="text-sm text-base-content/60">2025-05-12</div>
+              </div>
+
+              <h3 class="text-2xl font-bold mb-3 flex items-center gap-2">
+                <Icon name="lucide:cpu" class="w-6 h-6 text-primary" />
+                FPGA AD936x SDR 开发板
+              </h3>
+
+              <p class="text-base-content/70 mb-4">
+                基于 Zynq7020 SoC 和 AD9361 射频芯片的软件定义无线电（SDR）开发板项目。
+              </p>
+
+              <div class="space-y-2 text-sm text-base-content/80 mb-4">
+                <div class="flex items-center gap-2">
+                  <Icon name="lucide:cpu" class="w-4 h-4 text-primary" />
+                  <span>Xilinx Zynq7020 SoC（双核 ARM Cortex-A9 + FPGA）</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <Icon name="lucide:radio-tower" class="w-4 h-4 text-primary" />
+                  <span>AD9361 射频芯片（70MHz - 6GHz 带宽）</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <Icon name="lucide:cable" class="w-4 h-4 text-primary" />
+                  <span>千兆以太网、USB OTG、MIPI CSI 摄像头</span>
+                </div>
+              </div>
+
+              <div class="flex gap-2">
+                <a href="#fpga-details" class="btn btn-sm btn-primary">查看设计详情</a>
+              </div>
             </div>
-
-            <h2 class="text-2xl font-bold mb-3 flex items-center gap-2">
-              <Icon name="lucide:cpu" class="w-6 h-6 text-primary" />
-              FPGA AD936x SDR 开发板
-            </h2>
-
-            <p class="text-base-content/70 mb-4">
-              基于 Zynq7020 SoC 和 AD9361 射频芯片的软件定义无线电（SDR）开发板项目。
-            </p>
-
-            <div class="space-y-2 text-sm text-base-content/80 mb-4">
-              <div class="flex items-center gap-2">
-                <Icon name="lucide:cpu" class="w-4 h-4 text-primary" />
-                <span>Xilinx Zynq7020 SoC（双核 ARM Cortex-A9 + FPGA）</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <Icon name="lucide:radio-tower" class="w-4 h-4 text-primary" />
-                <span>AD9361 射频芯片（70MHz - 6GHz 带宽）</span>
-              </div>
-              <div class="flex items-center gap-2">
-                <Icon name="lucide:cable" class="w-4 h-4 text-primary" />
-                <span>千兆以太网、USB OTG、MIPI CSI 摄像头</span>
-              </div>
-            </div>
-
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- 设计文件详情 - 可折叠 -->
-      <div class="collapse collapse-arrow bg-base-200">
-        <input type="checkbox" id="design-details" />
-        <label for="design-details" class="collapse-title text-xl font-bold cursor-pointer">
+        <!-- FPGA 项目设计详情 - 可折叠 -->
+        <div class="collapse collapse-arrow bg-base-200 mt-4">
+          <input type="checkbox" id="fpga-details" />
+        <label for="fpga-details" class="collapse-title text-xl font-bold cursor-pointer">
           <div class="flex items-center gap-2">
             <Icon name="lucide:folder-open" class="w-6 h-6 text-primary" />
             <span>查看设计详情</span>
@@ -175,6 +178,333 @@ import MainCard from "@/components/MainCard.astro";
         </div>
       </div>
 
+      <!-- ========== BD2 效果器 (2025-02-03) ========== -->
+          <article class="card bg-base-200 overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="md:flex">
+              <figure class="md:w-64 md:flex-shrink-0">
+                <img 
+                  src="/image/project/BD2 25-2-3/cover.webp" 
+                  alt="BD2驱动板" 
+                  class="w-full h-48 md:h-full object-cover"
+                  loading="lazy"
+                />
+              </figure>
+
+              <div class="p-6 flex-1">
+                <div class="flex items-start gap-3 mb-3">
+                  <div class="badge badge-accent">音频效果器</div>
+                  <div class="badge badge-success">已完成</div>
+                  <div class="text-sm text-base-content/60">2025-02-03</div>
+                </div>
+
+                <h3 class="text-2xl font-bold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:music" class="w-6 h-6 text-accent" />
+                  BD2 效果器
+                </h3>
+
+                <p class="text-base-content/70 mb-4">
+                  <!-- 📝 待填写：项目介绍 -->
+                  <span class="italic text-base-content/50">待添加项目介绍...</span>
+                </p>
+
+                <div class="flex gap-2">
+                  <a href="#bd2-details" class="btn btn-sm btn-accent">查看详情</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- BD2 效果器详情 - 可折叠 -->
+          <div class="collapse collapse-arrow bg-base-200 mt-4">
+            <input type="checkbox" id="bd2-details" />
+            <label for="bd2-details" class="collapse-title text-xl font-bold cursor-pointer">
+              <div class="flex items-center gap-2">
+                <Icon name="lucide:folder-open" class="w-6 h-6 text-accent" />
+                <span>设计详情</span>
+              </div>
+            </label>
+            <div class="collapse-content">
+              <div class="space-y-6 pt-4">
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">原理图</h4>
+                  <img src="/image/project/BD2 25-2-3/SCH_Schematic1_1-P1_2025-11-08.webp" alt="原理图" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">PCB 设计</h4>
+                  <img src="/image/project/BD2 25-2-3/2D_PCB1_2025-11-08.webp" alt="PCB设计" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">PCB 底层</h4>
+                  <img src="/image/project/BD2 25-2-3/2D_PCBbottom.webp" alt="PCB底层" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <!-- ========== 智能车比赛 (2025-01) ========== -->
+      <section>
+        <div class="flex items-center gap-3 mb-4">
+          <h2 class="text-2xl font-bold">智能车比赛</h2>
+          <div class="badge badge-lg badge-secondary">2025年1月</div>
+        </div>
+
+        <div class="space-y-4">
+
+          <!-- 逐飞驱动板 (2025-01-13) -->
+          <article class="card bg-base-200 overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="md:flex">
+              <figure class="md:w-64 md:flex-shrink-0">
+                <img 
+                  src="/image/project/zhufei_driver 25-1-13/cover.webp" 
+                  alt="逐飞驱动板" 
+                  class="w-full h-48 md:h-full object-cover"
+                  loading="lazy"
+                />
+              </figure>
+
+              <div class="p-6 flex-1">
+                <div class="flex items-start gap-3 mb-3">
+                  <div class="badge badge-secondary">智能车</div>
+                  <div class="badge badge-success">已完成</div>
+                  <div class="text-sm text-base-content/60">2025-01-13</div>
+                </div>
+
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:zap" class="w-5 h-5 text-secondary" />
+                  逐飞驱动板
+                </h3>
+
+                <p class="text-base-content/70 mb-4">
+                  <!-- 📝 待填写：项目介绍 -->
+                  <span class="italic text-base-content/50">待添加项目介绍...</span>
+                </p>
+
+                <div class="flex gap-2">
+                  <a href="#zhufei-details" class="btn btn-sm btn-secondary">查看详情</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 逐飞驱动板详情 - 可折叠 -->
+          <div class="collapse collapse-arrow bg-base-200">
+            <input type="checkbox" id="zhufei-details" />
+            <label for="zhufei-details" class="collapse-title font-semibold cursor-pointer">
+              <div class="flex items-center gap-2">
+                <Icon name="lucide:folder-open" class="w-5 h-5 text-secondary" />
+                <span>设计详情</span>
+              </div>
+            </label>
+            <div class="collapse-content">
+              <div class="space-y-6 pt-4">
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">原理图 - 页面1</h4>
+                  <img src="/image/project/zhufei_driver 25-1-13/SCH_Schematic2_1-P1_2025-11-08.webp" alt="原理图1" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">原理图 - 页面2</h4>
+                  <img src="/image/project/zhufei_driver 25-1-13/SCH_Schematic2_2-P2_2025-11-08.webp" alt="原理图2" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">PCB 顶层</h4>
+                  <img src="/image/project/zhufei_driver 25-1-13/2D_PCBtop.webp" alt="PCB顶层" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">PCB 底层</h4>
+                  <img src="/image/project/zhufei_driver 25-1-13/2D_PCBbottom.webp" alt="PCB底层" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 舵机驱动板 (2025-01-11) -->
+          <article class="card bg-base-200 overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="md:flex">
+              <figure class="md:w-64 md:flex-shrink-0">
+                <img 
+                  src="/image/project/servo_driver 25-1-11/cover.webp" 
+                  alt="舵机驱动板" 
+                  class="w-full h-48 md:h-full object-cover"
+                  loading="lazy"
+                />
+              </figure>
+
+              <div class="p-6 flex-1">
+                <div class="flex items-start gap-3 mb-3">
+                  <div class="badge badge-secondary">智能车</div>
+                  <div class="badge badge-success">已完成</div>
+                  <div class="text-sm text-base-content/60">2025-01-11</div>
+                </div>
+
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:move" class="w-5 h-5 text-secondary" />
+                  舵机驱动板
+                </h3>
+
+                <p class="text-base-content/70 mb-4">
+                  <!-- 📝 待填写：项目介绍 -->
+                  <span class="italic text-base-content/50">待添加项目介绍...</span>
+                </p>
+
+                <div class="flex gap-2">
+                  <a href="#servo-details" class="btn btn-sm btn-secondary">查看详情</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 舵机驱动板详情 - 可折叠 -->
+          <div class="collapse collapse-arrow bg-base-200">
+            <input type="checkbox" id="servo-details" />
+            <label for="servo-details" class="collapse-title font-semibold cursor-pointer">
+              <div class="flex items-center gap-2">
+                <Icon name="lucide:folder-open" class="w-5 h-5 text-secondary" />
+                <span>设计详情</span>
+              </div>
+            </label>
+            <div class="collapse-content">
+              <div class="space-y-6 pt-4">
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">原理图</h4>
+                  <img src="/image/project/servo_driver 25-1-11/SCH_Schematic1_1-P1_2025-11-08.webp" alt="原理图" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">PCB 顶层</h4>
+                  <img src="/image/project/servo_driver 25-1-11/2D_PCBtop.webp" alt="PCB顶层" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">PCB 底层</h4>
+                  <img src="/image/project/servo_driver 25-1-11/2D_PCBbottom.webp" alt="PCB底层" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 扩展板 (2025-01-11) -->
+          <article class="card bg-base-200 overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="md:flex">
+              <figure class="md:w-64 md:flex-shrink-0">
+                <img 
+                  src="/image/project/Expanding board 25-1-11/cover.webp" 
+                  alt="扩展板" 
+                  class="w-full h-48 md:h-full object-cover"
+                  loading="lazy"
+                />
+              </figure>
+
+              <div class="p-6 flex-1">
+                <div class="flex items-start gap-3 mb-3">
+                  <div class="badge badge-secondary">智能车</div>
+                  <div class="badge badge-success">已完成</div>
+                  <div class="text-sm text-base-content/60">2025-01-11</div>
+                </div>
+
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:boxes" class="w-5 h-5 text-secondary" />
+                  扩展板
+                </h3>
+
+                <p class="text-base-content/70 mb-4">
+                  <!-- 📝 待填写：项目介绍 -->
+                  <span class="italic text-base-content/50">待添加项目介绍...</span>
+                </p>
+
+                <div class="flex gap-2">
+                  <a href="#expanding-details" class="btn btn-sm btn-secondary">查看详情</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 扩展板详情 - 可折叠 -->
+          <div class="collapse collapse-arrow bg-base-200">
+            <input type="checkbox" id="expanding-details" />
+            <label for="expanding-details" class="collapse-title font-semibold cursor-pointer">
+              <div class="flex items-center gap-2">
+                <Icon name="lucide:folder-open" class="w-5 h-5 text-secondary" />
+                <span>设计详情</span>
+              </div>
+            </label>
+            <div class="collapse-content">
+              <div class="space-y-6 pt-4">
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">原理图</h4>
+                  <img src="/image/project/Expanding board 25-1-11/SCH_Schematic1_3_1-P1_2025-11-08.webp" alt="原理图" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">PCB 设计</h4>
+                  <img src="/image/project/Expanding board 25-1-11/2D_PCB23_2025-11-08.webp" alt="PCB" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========== BLDC 无刷电机驱动 (2024-11-23) ========== -->
+          <article class="card bg-base-200 overflow-hidden hover:shadow-xl transition-shadow">
+            <div class="md:flex">
+              <figure class="md:w-64 md:flex-shrink-0">
+                <img 
+                  src="/image/project/BLDC driver 24-11-23/cover.webp" 
+                  alt="BLDC无刷电机驱动" 
+                  class="w-full h-48 md:h-full object-cover"
+                  loading="lazy"
+                />
+              </figure>
+
+              <div class="p-6 flex-1">
+                <div class="flex items-start gap-3 mb-3">
+                  <div class="badge badge-info">电机驱动</div>
+                  <div class="badge badge-success">已完成</div>
+                  <div class="text-sm text-base-content/60">2024-11-23</div>
+                </div>
+
+                <h3 class="text-2xl font-bold mb-3 flex items-center gap-2">
+                  <Icon name="lucide:rotate-3d" class="w-6 h-6 text-info" />
+                  BLDC 无刷电机驱动
+                </h3>
+
+                <p class="text-base-content/70 mb-4">
+                  <!-- 📝 待填写：项目介绍 -->
+                  <span class="italic text-base-content/50">待添加项目介绍...</span>
+                </p>
+
+                <div class="flex gap-2">
+                  <a href="#bldc-details" class="btn btn-sm btn-info">查看详情</a>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- BLDC 驱动详情 - 可折叠 -->
+          <div class="collapse collapse-arrow bg-base-200 mt-4">
+            <input type="checkbox" id="bldc-details" />
+            <label for="bldc-details" class="collapse-title text-xl font-bold cursor-pointer">
+              <div class="flex items-center gap-2">
+                <Icon name="lucide:folder-open" class="w-6 h-6 text-info" />
+                <span>设计详情</span>
+              </div>
+            </label>
+            <div class="collapse-content">
+              <div class="space-y-6 pt-4">
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">原理图</h4>
+                  <img src="/image/project/BLDC driver 24-11-23/sch.webp" alt="原理图" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">PCB 顶层</h4>
+                  <img src="/image/project/BLDC driver 24-11-23/2D_PCB_top.webp" alt="PCB顶层" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+                <div>
+                  <h4 class="text-lg font-semibold mb-3">PCB 底层</h4>
+                  <img src="/image/project/BLDC driver 24-11-23/2D_PCB_bottom.webp" alt="PCB底层" class="w-full rounded-lg border shadow-lg" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+
       <!-- GitHub 链接 -->
       <div class="text-center pt-8">
         <a
@@ -187,6 +517,6 @@ import MainCard from "@/components/MainCard.astro";
           <span>查看更多项目</span>
         </a>
       </div>
-    </div>
+      </div>
   </MainCard>
 </BaseLayout>
