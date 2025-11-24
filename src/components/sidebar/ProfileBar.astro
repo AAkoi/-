@@ -10,9 +10,9 @@ const currentPath = Astro.url.pathname;
 
 <Card>
   <div class="relative p-4 flex flex-col">
-    <div class="p-2 flex justify-center">
+    <div class="p-2 flex justify-center anna-profile-wrapper group cursor-help relative">
       <Image
-        class="mask mask-circle"
+        class="mask mask-circle transition-all duration-300 group-hover:brightness-105"
         format="webp"
         width={250}
         height={250}
@@ -20,6 +20,19 @@ const currentPath = Astro.url.pathname;
         alt="Profile"
         loading="eager"
       />
+      
+      <!-- 💧 慌张汗滴 (CSS绘制) -->
+      <div class="anna-sweat absolute top-12 right-6 opacity-0 pointer-events-none group-hover:opacity-100"></div>
+      
+      <!-- 💢 或是 震惊线 (CSS绘制) -->
+      <div class="anna-shock-lines absolute -top-2 left-10 opacity-0 pointer-events-none group-hover:opacity-100">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+
+      <!-- 🌀 败犬凝视波纹 -->
+      <div class="anna-ripple absolute inset-0 rounded-full pointer-events-none"></div>
     </div>
     <ul class="menu bg-transparent w-full m-0 p-0 hidden md:flex flex-col items-center lg:items-start">
       {
@@ -89,3 +102,126 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 </Card>
+
+<style>
+  /* 
+    💙 八奈见杏菜 - 侧边栏头像特效 
+    主题：被抓包的贪吃鬼 / 败犬的凝视
+  */
+
+  /* 震动动画：模拟偷吃被发现时的“激灵” */
+  .group:hover .mask-circle {
+    animation: anna-shock-shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+  @keyframes anna-shock-shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-1deg); }
+    20%, 80% { transform: translate3d(2px, 0, 0) rotate(2deg); }
+    30%, 50%, 70% { transform: translate3d(-3px, 0, 0) rotate(-2deg); }
+    40%, 60% { transform: translate3d(3px, 0, 0) rotate(1deg); }
+  }
+
+  /* 💧 汗滴：经典的蓝色侧边大汗滴 */
+  .anna-sweat {
+    width: 24px;
+    height: 36px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9) 10%, #60a5fa 30%, #3b82f6 100%);
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(45deg);
+    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+    transition: opacity 0.2s ease;
+  }
+
+  .group:hover .anna-sweat {
+    animation: sweat-slide 1.8s infinite ease-in-out 0.1s;
+  }
+
+  @keyframes sweat-slide {
+    0% {
+      opacity: 0;
+      transform: rotate(45deg) translate(-5px, -10px) scale(0.8);
+    }
+    20% {
+      opacity: 1;
+      transform: rotate(45deg) translate(0, 0) scale(1);
+    }
+    80% {
+      opacity: 0.8;
+      transform: rotate(45deg) translate(0, 15px) scale(0.95);
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(45deg) translate(0, 20px) scale(0.9);
+    }
+  }
+
+  /* 💢/||| 震惊线：头顶冒出的三条黑线/蓝线 */
+  .anna-shock-lines {
+    display: flex;
+    gap: 8px;
+    transform: rotate(-15deg);
+  }
+
+  .line {
+    width: 6px;
+    background: #1e40af; /* 深败犬蓝 */
+    border-radius: 4px;
+    opacity: 0.8;
+    height: 0; /* 初始高度为0 */
+    box-shadow: 0 0 5px rgba(30, 64, 175, 0.2);
+  }
+
+  .group:hover .anna-shock-lines .line {
+    animation: lines-grow 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  .group:hover .anna-shock-lines .line:nth-child(1) { height: 30px; animation-delay: 0s; }
+  .group:hover .anna-shock-lines .line:nth-child(2) { height: 45px; animation-delay: 0.1s; }
+  .group:hover .anna-shock-lines .line:nth-child(3) { height: 35px; animation-delay: 0.2s; }
+
+  @keyframes lines-grow {
+    from { height: 0; opacity: 0; }
+    to { opacity: 0.9; } 
+    /* height is controlled by forwards state */
+  }
+
+  /* 🌀 败犬波纹：背景中隐约扩散的忧郁蓝圈 */
+  .anna-ripple {
+    z-index: -1;
+  }
+  
+  .anna-ripple::before,
+  .anna-ripple::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid rgba(96, 165, 250, 0.4);
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+
+  .group:hover .anna-ripple::before {
+    animation: ripple-expand 2s infinite linear;
+  }
+  
+  .group:hover .anna-ripple::after {
+    animation: ripple-expand 2s infinite linear 1s;
+  }
+
+  @keyframes ripple-expand {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0.6;
+      border-width: 4px;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1.4);
+      opacity: 0;
+      border-width: 0px;
+    }
+  }
+</style>
