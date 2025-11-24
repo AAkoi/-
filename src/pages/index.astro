@@ -81,9 +81,16 @@ import FeatureCard from "@/components/mdx/FeatureCard.astro";
 
         <div class="card bg-base-200 p-6">
           <div class="flex flex-col md:flex-row gap-6 items-center">
-            <div class="avatar">
-              <div class="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="/profile.png" alt="AAkoi" />
+            <div class="avatar anna-style group">
+              <div class="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 transition-all duration-500 group-hover:ring-4 group-hover:ring-blue-400/50">
+                <img src="/profile.png" alt="AAkoi" class="object-cover" />
+              </div>
+              <!-- 呆毛/心情符号 -->
+              <div class="absolute -top-2 -right-2 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-y-2 delay-100">
+                <span class="text-2xl animate-bounce inline-block">✨</span>
+              </div>
+              <div class="absolute bottom-0 -left-1 opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:-translate-x-2 delay-200">
+                 <span class="text-xl animate-pulse inline-block text-blue-400">💧</span>
               </div>
             </div>
             <div class="flex-1 text-center md:text-left">
@@ -108,3 +115,39 @@ import FeatureCard from "@/components/mdx/FeatureCard.astro";
     </div>
   </MainCard>
 </BaseLayout>
+
+<style>
+  /* 
+    💙 八奈见杏菜风格头像特效
+    关键词：吃货雷达、败犬蓝、元气Q弹、表情包
+  */
+  
+  .anna-style {
+    position: relative;
+    cursor: pointer;
+    /* 增加一点点击时的互动 */
+  }
+
+  .anna-style:active .rounded-full {
+    transform: scale(0.95) rotate(0deg) !important;
+    transition: transform 0.1s ease-out;
+  }
+
+  /* 悬停时的果冻弹跳 + 歪头杀 */
+  .anna-style:hover .rounded-full {
+    transform: scale(1.15) rotate(-6deg);
+    /* 使用高弹性贝塞尔曲线模拟“看到美食瞬间”的激动 */
+    transition: transform 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5); /* 败犬蓝光晕 */
+  }
+
+  /* 内部图片的持续微动 - 模拟急不可耐/呼吸 */
+  .anna-style:hover img {
+    animation: anna-anticipation 1.5s ease-in-out infinite;
+  }
+
+  @keyframes anna-anticipation {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+</style>

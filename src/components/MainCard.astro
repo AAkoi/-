@@ -186,11 +186,11 @@ const accessibleHelpText = `${helpText}: ${title}`;
   }
 
   /* 六花：暗夜降临 + 克制登场 */
-  .hero-cool-anime .hero-banner-wrapper {
+  :global(.hero-cool-anime) .hero-banner-wrapper {
     background: radial-gradient(ellipse at center, rgba(20, 20, 50, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
   }
 
-  .hero-cool-anime .hero-banner-image {
+  :global(.hero-cool-anime) .hero-banner-image {
     animation: rikka-awaken 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     filter: brightness(0.75) contrast(1.15) saturate(0.9);
     will-change: transform, filter;
@@ -215,13 +215,13 @@ const accessibleHelpText = `${helpText}: ${title}`;
   }
 
   /* 悬停：极其克制的静默脉动 */
-  .hero-cool-anime .hero-banner-wrapper:hover .hero-banner-image {
+  :global(.hero-cool-anime) .hero-banner-wrapper:hover .hero-banner-image {
     filter: brightness(0.88) contrast(1.2) saturate(1.1);
     transform: scale(1.005);
   }
 
   /* 冷色霓虹结界光 - 一次性缓慢扫过 */
-  .hero-cool-anime .hero-banner-wrapper::after {
+  :global(.hero-cool-anime) .hero-banner-wrapper::after {
     content: '';
     position: absolute;
     top: -10%;
@@ -263,7 +263,7 @@ const accessibleHelpText = `${helpText}: ${title}`;
   }
 
   /* 标题咒语浮现 */
-  .hero-cool-anime .hero-banner-wrapper .absolute {
+  :global(.hero-cool-anime) .hero-banner-wrapper .absolute {
     animation: rikka-spell-appear 2s cubic-bezier(0.16, 1, 0.3, 1) 1.5s both;
   }
 
@@ -284,7 +284,7 @@ const accessibleHelpText = `${helpText}: ${title}`;
   }
 
   /* 暗夜结界微光 - 悬停时才显现 */
-  .hero-cool-anime .hero-banner-wrapper::before {
+  :global(.hero-cool-anime) .hero-banner-wrapper::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -297,7 +297,7 @@ const accessibleHelpText = `${helpText}: ${title}`;
     z-index: 1;
   }
 
-  .hero-cool-anime .hero-banner-wrapper:hover::before {
+  :global(.hero-cool-anime) .hero-banner-wrapper:hover::before {
     opacity: 1;
     transition: opacity 1.5s ease-out;
   }
@@ -316,7 +316,7 @@ const accessibleHelpText = `${helpText}: ${title}`;
     background: radial-gradient(ellipse at 50% 20%, rgba(255, 237, 213, 0.2) 0%, transparent 70%);
   }
 
-  .hero-cute-anime .hero-banner-image {
+  :global(.hero-cute-anime) .hero-banner-image {
     animation: chitoge-burst-in 1.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     filter: brightness(1.08) contrast(1.12) saturate(1.2);
     will-change: transform, filter;
@@ -344,13 +344,13 @@ const accessibleHelpText = `${helpText}: ${title}`;
   }
 
   /* 悬停：活力跃动 */
-  .hero-cute-anime .hero-banner-wrapper:hover .hero-banner-image {
+  :global(.hero-cute-anime) .hero-banner-wrapper:hover .hero-banner-image {
     filter: brightness(1.15) contrast(1.15) saturate(1.25);
     transform: scale(1.04) translateY(-4px);
   }
 
   /* 金色锐利光束 - 快速强势扫过 */
-  .hero-cute-anime .hero-banner-wrapper::after {
+  :global(.hero-cute-anime) .hero-banner-wrapper::after {
     content: '';
     position: absolute;
     top: -25%;
@@ -392,7 +392,7 @@ const accessibleHelpText = `${helpText}: ${title}`;
   }
 
   /* 标题强势出场 */
-  .hero-cute-anime .hero-banner-wrapper .absolute {
+  :global(.hero-cute-anime) .hero-banner-wrapper .absolute {
     animation: chitoge-title-pop 1.3s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s both;
   }
 
@@ -411,7 +411,7 @@ const accessibleHelpText = `${helpText}: ${title}`;
   }
 
   /* 明亮高光点缀 - 悬停时才显现 */
-  .hero-cute-anime .hero-banner-wrapper::before {
+  :global(.hero-cute-anime) .hero-banner-wrapper::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -424,7 +424,7 @@ const accessibleHelpText = `${helpText}: ${title}`;
     z-index: 1;
   }
 
-  .hero-cute-anime .hero-banner-wrapper:hover::before {
+  :global(.hero-cute-anime) .hero-banner-wrapper:hover::before {
     opacity: 1;
     transition: opacity 0.5s ease-out;
   }
@@ -445,8 +445,8 @@ const accessibleHelpText = `${helpText}: ${title}`;
       animation: none !important;
       transition: none !important;
     }
-    .hero-cool-anime .hero-banner-image,
-    .hero-cute-anime .hero-banner-image {
+    :global(.hero-cool-anime) .hero-banner-image,
+    :global(.hero-cute-anime) .hero-banner-image {
       filter: none !important;
       opacity: 1 !important;
       transform: none !important;
@@ -454,10 +454,10 @@ const accessibleHelpText = `${helpText}: ${title}`;
   }
 
   @media (max-width: 768px) {
-    .hero-cool-anime .hero-banner-image {
+    :global(.hero-cool-anime) .hero-banner-image {
       animation: rikka-awaken 1.5s ease-out forwards;
     }
-    .hero-cute-anime .hero-banner-image {
+    :global(.hero-cute-anime) .hero-banner-image {
       animation: chitoge-burst-in 1.2s ease-out forwards;
     }
     .hero-banner-wrapper:hover .hero-banner-image {
