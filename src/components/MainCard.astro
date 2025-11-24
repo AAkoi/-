@@ -239,9 +239,9 @@ const accessibleHelpText = `${helpText}: ${title}`;
     will-change: transform, opacity;
   }
 
-  /* 添加悬停时的轻微浮动效果 */
-  .hero-banner-wrapper:hover .hero-banner-image {
-    animation: hero-float 3s ease-in-out infinite;
+  /* 默认移除通用悬停效果，由各自的风格类控制 */
+  .hero-banner-wrapper {
+    transition: all 0.3s ease-out;
   }
 
   /* 标题容器动画 */
@@ -260,75 +260,120 @@ const accessibleHelpText = `${helpText}: ${title}`;
     }
   }
 
-  /* 耍酷风格 - 首页动画 */
+  /* 耍酷风格 - 首页动画（小鸟游六花气质：冷酷中二、邪王真眼、结界静默感） */
   .hero-cool-anime .hero-banner-image {
-    animation: hero-zoom-in 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-               hero-tilt 4s ease-in-out 1.5s infinite;
+    animation: hero-zoom-in 1.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    filter: brightness(0.85) contrast(1.1);
   }
 
-  @keyframes hero-tilt {
+  /* 悬停时：邪王真眼觉醒 - 缓慢脉动，不突兀 */
+  .hero-cool-anime:hover .hero-banner-image {
+    animation: hero-eye-pulse 6s ease-in-out infinite;
+    filter: brightness(0.95) contrast(1.15) saturate(1.2);
+    transition: filter 1.2s ease-out;
+  }
+
+  @keyframes hero-eye-pulse {
     0%, 100% {
-      transform: scale(1) rotate(0deg);
+      transform: scale(1);
+      filter: brightness(0.95) contrast(1.15);
     }
-    25% {
-      transform: scale(1.02) rotate(-0.5deg);
-    }
-    75% {
-      transform: scale(1.02) rotate(0.5deg);
+    50% {
+      transform: scale(1.01);
+      filter: brightness(1.02) contrast(1.18) saturate(1.3);
     }
   }
 
+  /* 结界光效：冷色霓虹微光 */
   .hero-cool-anime .hero-banner-wrapper::after {
     background: linear-gradient(
-      120deg,
+      135deg,
       transparent 0%,
-      rgba(147, 51, 234, 0.4) 40%,
-      rgba(236, 72, 153, 0.4) 50%,
-      rgba(59, 130, 246, 0.4) 60%,
+      rgba(59, 130, 246, 0.15) 30%,
+      rgba(139, 92, 246, 0.25) 50%,
+      rgba(236, 72, 153, 0.2) 70%,
       transparent 100%
     );
-    animation: shine-sweep 2.5s ease-in-out 0.5s 1;
+    animation: mystic-barrier 4s ease-in-out 0.8s 1;
+    mix-blend-mode: screen;
   }
 
-  /* 可爱风格 - 项目页动画 */
-  .hero-cute-anime .hero-banner-image {
-    animation: hero-zoom-in 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-               hero-bounce-float 5s ease-in-out 1.2s infinite;
-  }
-
-  @keyframes hero-bounce-float {
-    0%, 100% {
-      transform: scale(1) translateY(0);
-    }
-    10% {
-      transform: scale(1.01) translateY(-5px);
-    }
-    20% {
-      transform: scale(1) translateY(0);
-    }
-    30% {
-      transform: scale(1.01) translateY(-3px);
+  @keyframes mystic-barrier {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%) skewX(-15deg);
     }
     40% {
-      transform: scale(1) translateY(0);
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(150%) skewX(-15deg);
     }
   }
 
-  .hero-cute-anime .hero-banner-wrapper::after {
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(251, 191, 36, 0.3) 25%,
-      rgba(244, 114, 182, 0.4) 50%,
-      rgba(251, 191, 36, 0.3) 75%,
-      transparent 100%
-    );
-    animation: shine-sweep 3s ease-in-out 0.6s 1;
+  /* 甜酷风格 - 友链页动画（千棘气质：明亮锐利、阳光炸裂、甜酷反差） */
+  .hero-cute-anime .hero-banner-image {
+    animation: hero-zoom-in 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    filter: brightness(1.1) contrast(1.2) saturate(1.15);
   }
 
-  /* 添加粒子效果（可选） */
-  .hero-cool-anime .hero-banner-wrapper::before,
-  .hero-cute-anime .hero-banner-wrapper::before {
+  /* 悬停时：活力跃动感 - 有节奏的弹跳 */
+  .hero-cute-anime:hover .hero-banner-image {
+    animation: hero-energy-bounce 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+    filter: brightness(1.15) contrast(1.25) saturate(1.25);
+    transition: filter 0.4s ease-out;
+  }
+
+  @keyframes hero-energy-bounce {
+    0%, 100% {
+      transform: scale(1) translateY(0) rotate(0deg);
+    }
+    15% {
+      transform: scale(1.03) translateY(-8px) rotate(0.8deg);
+    }
+    30% {
+      transform: scale(1) translateY(0) rotate(0deg);
+    }
+    45% {
+      transform: scale(1.02) translateY(-4px) rotate(-0.5deg);
+    }
+    60% {
+      transform: scale(1) translateY(0) rotate(0deg);
+    }
+  }
+
+  /* 阳光爆发光效：明亮高能量 */
+  .hero-cute-anime .hero-banner-wrapper::after {
+    background: linear-gradient(
+      110deg,
+      transparent 0%,
+      rgba(251, 191, 36, 0.45) 30%,
+      rgba(249, 115, 22, 0.5) 45%,
+      rgba(244, 114, 182, 0.55) 55%,
+      rgba(251, 191, 36, 0.45) 70%,
+      transparent 100%
+    );
+    animation: sunshine-blast 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.5s 1;
+    mix-blend-mode: overlay;
+  }
+
+  @keyframes sunshine-blast {
+    0% {
+      opacity: 0;
+      transform: translateX(-120%) skewX(-20deg) scale(0.8);
+    }
+    30% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(180%) skewX(-20deg) scale(1.2);
+    }
+  }
+
+  /* 小鸟游六花：结界粒子效果 - 冷色静谧旋转 */
+  .hero-cool-anime .hero-banner-wrapper::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -336,28 +381,132 @@ const accessibleHelpText = `${helpText}: ${title}`;
     width: 200%;
     height: 200%;
     background: radial-gradient(
-      circle at center,
-      rgba(255, 255, 255, 0.1) 0%,
-      transparent 70%
+      circle at 30% 40%,
+      rgba(139, 92, 246, 0.08) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 70% 60%,
+      rgba(59, 130, 246, 0.06) 0%,
+      transparent 45%
     );
-    animation: particle-rotate 20s linear infinite;
+    animation: barrier-rotate 25s linear infinite;
     pointer-events: none;
     opacity: 0;
     z-index: 1;
   }
 
-  .hero-cool-anime:hover .hero-banner-wrapper::before,
-  .hero-cute-anime:hover .hero-banner-wrapper::before {
+  .hero-cool-anime:hover .hero-banner-wrapper::before {
     opacity: 1;
+    transition: opacity 1.5s ease-out;
   }
 
-  @keyframes particle-rotate {
+  @keyframes barrier-rotate {
     0% {
       transform: rotate(0deg);
     }
     100% {
       transform: rotate(360deg);
     }
+  }
+
+  /* 千棘：能量粒子效果 - 明亮快速闪烁 */
+  .hero-cute-anime .hero-banner-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background: radial-gradient(
+      circle at 40% 30%,
+      rgba(251, 191, 36, 0.15) 0%,
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 60% 70%,
+      rgba(244, 114, 182, 0.12) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(249, 115, 22, 0.1) 0%,
+      transparent 30%
+    );
+    animation: energy-sparkle 3s ease-in-out infinite;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .hero-cute-anime:hover .hero-banner-wrapper::before {
+    opacity: 1;
+    transition: opacity 0.6s ease-out;
+  }
+
+  @keyframes energy-sparkle {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 0.6;
+    }
+    50% {
+      transform: scale(1.15) rotate(180deg);
+      opacity: 1;
+    }
+  }
+
+  /* 小鸟游六花：扫描线结界效果 */
+  .hero-cool-anime .hero-banner-wrapper {
+    position: relative;
+  }
+
+  .hero-cool-anime .hero-banner-wrapper .aspect-video::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 92, 246, 0.03) 2px,
+      rgba(139, 92, 246, 0.03) 4px
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s ease-out;
+    z-index: 2;
+  }
+
+  .hero-cool-anime:hover .hero-banner-wrapper .aspect-video::after {
+    opacity: 1;
+  }
+
+  /* 千棘：锐利光束效果 */
+  .hero-cute-anime .hero-banner-wrapper .aspect-video::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      linear-gradient(45deg, transparent 48%, rgba(251, 191, 36, 0.15) 49%, rgba(251, 191, 36, 0.15) 51%, transparent 52%),
+      linear-gradient(-45deg, transparent 48%, rgba(244, 114, 182, 0.12) 49%, rgba(244, 114, 182, 0.12) 51%, transparent 52%);
+    background-size: 200% 200%;
+    background-position: -100% -100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.5s ease-out;
+    z-index: 2;
+  }
+
+  .hero-cute-anime:hover .hero-banner-wrapper .aspect-video::after {
+    opacity: 1;
+    background-position: 100% 100%;
+    transition: all 2s ease-out;
   }
 
   /* 响应式优化 - 移动端减少动画 */
@@ -372,9 +521,25 @@ const accessibleHelpText = `${helpText}: ${title}`;
 
   @media (max-width: 768px) {
     /* 移动端简化动画 */
-    .hero-cool-anime .hero-banner-image,
+    .hero-cool-anime .hero-banner-image {
+      animation: hero-zoom-in 1.2s ease-out forwards;
+      filter: brightness(0.9) contrast(1.1);
+    }
+    
     .hero-cute-anime .hero-banner-image {
-      animation: hero-zoom-in 1s ease-out forwards;
+      animation: hero-zoom-in 0.9s ease-out forwards;
+      filter: brightness(1.05) contrast(1.15);
+    }
+
+    /* 移动端禁用悬停动画 */
+    .hero-cool-anime:hover .hero-banner-image,
+    .hero-cute-anime:hover .hero-banner-image {
+      animation: none;
+    }
+
+    .hero-cool-anime:hover .hero-banner-wrapper::before,
+    .hero-cute-anime:hover .hero-banner-wrapper::before {
+      opacity: 0;
     }
   }
 </style>
