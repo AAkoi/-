@@ -290,7 +290,7 @@ motorDevice 指向选中的驱动程序的虚函数表 (vTable)
 
 后续为初始化beeper，再次运用PG系统，再梳理一遍，后续再遇到PG就跳过了！
 
-```C
+```c
 beeperInit(beeperDevConfig());
                ↓
            PG_DECLARE(beeperDevConfig_t, beeperDevConfig);
@@ -324,7 +324,7 @@ beeperInit(beeperDevConfig());
 
 
 
-```C
+```c
 initBoardAlignment(boardAlignment());  //把eeprom里面的板子倾斜数据进行坐标系的转换
                                        //可以在地面站设置，默认3轴都为0
 /*流程如下：
@@ -353,7 +353,7 @@ systemState |= SYSTEM_STATE_SENSORS_READY;//记录状态
 
 ==TODO==这2个函数包括了一些pid时间的设置和滤波器的一些设置，检测电调协议，加载pid配置，初始化dshot，滤波器，pid，mixer
 
-```C
+```c
     // Set the targetLooptime based on the detected gyro sampleRateHz and pid_process_denom
     gyroSetTargetLooptime(pidConfig()->pid_process_denom);
 
@@ -380,7 +380,7 @@ systemState |= SYSTEM_STATE_SENSORS_READY;//记录状态
 
 ==TODO==后续为：
 
-```C
+```c
 imuInit();//初始化算法层面的传感器，形成特殊矩阵，后续讲解
 
 failsafeInit();//初始化故障状态 todo：什么时候会改变故障状态

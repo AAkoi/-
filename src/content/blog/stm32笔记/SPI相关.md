@@ -18,7 +18,7 @@ tags:
 
 注意：hdma_spi1_rx.Init.PeriphInc = DMA_PINC_DISABLE;  因为读和写数据都是从SPI的寄存器来的，所以这个地址不递增。ADC的DMA可以使用这个。
 
-```C
+```c
 /**
  * @brief SPI1 初始化函数（用于 ICM42688P IMU）
  */
@@ -122,7 +122,7 @@ void MX_SPI1_Init(void)
 
 和 IIC 一样，SPI 的 GPIO 初始化是在 **HAL_SPI_MspInit()** 里面完成的。
 
-```C
+```c
 /**
  * @brief SPI1 底层硬件初始化（GPIO + 外设时钟）
  */
@@ -158,7 +158,7 @@ void HAL_SPI_MspInit(SPI_HandleTypeDef* hspi)
 
 写：CS拉低，写东西，CS拉高。读
 
-```C
+```c
 /*轮询读*/
 uint8_t icm_spi_read_reg(uint8_t reg)
 {

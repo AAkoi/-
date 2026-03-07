@@ -23,7 +23,7 @@ PWM频率 = 定时器时钟 / ((PSC + 1) * (ARR + 1))
 
 首先你先给定一个PWM_TICK_HZ为1M，让PWM的原本时钟降到如84M降到1M，这样就需要预分频器，然后再来一个自动重装值 ARR就可以实现高低电平翻转了，注意不同定时器的时钟树不同。
 
-```C
+```c
 /**
  * @brief PWM定时器初始化
  * @param htim 定时器句柄
@@ -62,7 +62,7 @@ static bool pwm_setup_timer(TIM_HandleTypeDef *htim, TIM_TypeDef *instance, uint
 
 PWM输出必须把GPIO配置为 **定时器复用功能(AF)**。
 
-```C
+```c
 /**
  * @brief PWM GPIO初始化
  */
@@ -99,7 +99,7 @@ static void pwm_gpio_init(void)
 
 配置PWM模式并启动输出：
 
-```C
+```c
 /**
  * @brief 配置PWM通道并启动
  */
@@ -130,7 +130,7 @@ static bool pwm_config_and_start(TIM_HandleTypeDef *htim, uint32_t channel)
 
 修改占空比实际上是 **修改 CCR寄存器**。
 
-```C
+```c
 /**
  * @brief 设置PWM占空比
  * @param ch PWM通道

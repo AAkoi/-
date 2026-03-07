@@ -26,9 +26,10 @@ export default defineConfig({
     },
   },
   integrations: [updateConfig(), expressiveCode({
-    themes: ["material-theme-lighter", CODE_THEME],
+    themes: ["github-light-high-contrast", CODE_THEME],
     useDarkModeMediaQuery: false,
     themeCssSelector: (theme) => `[data-theme-type='${theme.type}']`,
+    minSyntaxHighlightingColorContrast: 7,
     styleOverrides: {
       borderRadius: "0.75rem",
     },

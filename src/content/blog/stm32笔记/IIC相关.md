@@ -51,7 +51,7 @@ void MX_I2C1_Init(void)
 
 这里其实跟uart1_gpio_init相似，都是配置GPIO的外设，AF到IIC，只不过HAL库有个HAL_I2C_MspInit，这个函数在HAL_I2C_Init(I2C_HandleTypeDef *hi2c)函数中，是__weak函数
 
-```C
+```c
 /**
  * @brief I2C1 底层硬件初始化（GPIO + 外设时钟）
  * @param hi2c I2C句柄
@@ -84,7 +84,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef *hi2c)
 
 ### 1）轮询读写寄存器
 
-```C
+```c
 /**
  * @brief 读取单个寄存器
  * @param dev_addr 设备地址（7位地址）
@@ -124,7 +124,7 @@ void bsp_i2c_write_reg(uint8_t dev_addr, uint8_t reg, uint8_t value)
 
 读写完后返回BOOL，但是数据还得等中断后的标志位好了才能执行。HAL_I2C_MasterTxCpltCallback(I2C_HandleTypeDef *hi2c)或是HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c)整笔TX或RX才调用这个中断函数回调
 
-```C
+```c
 /**
  * @brief 非阻塞写寄存器（启动传输后立即返回）
  * @param dev_addr 设备地址（7位）
