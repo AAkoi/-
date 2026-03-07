@@ -2,7 +2,7 @@
 title: "STM32 笔记：SPI 相关"
 description: "记录 STM32 SPI 主机模式初始化、GPIO 复用、寄存器读写和 DMA 配置要点。"
 pubDate: "2026-03-07"
-draft: true
+draft: false
 categories:
   - 笔记
   - 嵌入式

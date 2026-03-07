@@ -2,7 +2,7 @@
 title: "STM32 笔记：I2C 相关"
 description: "记录 STM32 I2C 的基础初始化、GPIO 开漏配置，以及阻塞和中断方式的寄存器读写。"
 pubDate: "2026-03-07"
-draft: true
+draft: false
 categories:
   - 笔记
   - 嵌入式

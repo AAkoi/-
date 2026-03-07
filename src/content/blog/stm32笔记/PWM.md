@@ -2,7 +2,7 @@
 title: "STM32 笔记：PWM"
 description: "记录 STM32 定时器 PWM 的频率计算、GPIO 复用、通道启动与占空比控制。"
 pubDate: "2026-03-07"
-draft: true
+draft: false
 categories:
   - 笔记
   - 嵌入式
