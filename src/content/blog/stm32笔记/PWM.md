@@ -4,7 +4,6 @@ description: "记录 STM32 定时器 PWM 的频率计算、GPIO 复用、通道�
 pubDate: "2026-03-07"
 draft: false
 categories:
-  - 笔记
   - 嵌入式
 tags:
   - STM32
