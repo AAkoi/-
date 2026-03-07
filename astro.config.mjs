@@ -26,7 +26,9 @@ export default defineConfig({
     },
   },
   integrations: [updateConfig(), expressiveCode({
-    themes: [CODE_THEME],
+    themes: ["material-theme-lighter", CODE_THEME],
+    useDarkModeMediaQuery: false,
+    themeCssSelector: (theme) => `[data-theme-type='${theme.type}']`,
     styleOverrides: {
       borderRadius: "0.75rem",
     },

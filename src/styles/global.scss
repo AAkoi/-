@@ -26,6 +26,35 @@ code {
   font-size: 0.875em;
 }
 
+:root,
+[data-theme-type="light"] {
+  --frosti-code-shell-bg: oklch(var(--b1));
+  --frosti-code-content-bg: #fafbfc;
+  --frosti-code-toolbar-bg: oklch(var(--b2));
+  --frosti-code-border: oklch(var(--bc) / 0.14);
+  --frosti-code-shadow: 0 12px 32px rgb(15 23 42 / 0.06);
+  --frosti-inline-code-bg: oklch(var(--b2) / 0.95);
+  --frosti-inline-code-color: oklch(var(--s));
+  --frosti-code-line-number: rgb(100 116 139 / 0.8);
+}
+
+[data-theme-type="dark"] {
+  --frosti-code-shell-bg: oklch(var(--b1));
+  --frosti-code-content-bg: rgb(24 30 54 / 1);
+  --frosti-code-toolbar-bg: rgb(34 42 72 / 1);
+  --frosti-code-border: oklch(var(--bc) / 0.12);
+  --frosti-code-shadow: 0 16px 40px rgb(2 6 23 / 0.3);
+  --frosti-inline-code-bg: oklch(var(--b2) / 0.75);
+  --frosti-inline-code-color: oklch(var(--a));
+  --frosti-code-line-number: rgb(148 163 184 / 0.78);
+}
+
+:not(pre) > code {
+  @apply px-1.5 py-0.5 rounded-md;
+  background: var(--frosti-inline-code-bg);
+  color: var(--frosti-inline-code-color);
+}
+
 .scrollbar-none {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
@@ -51,21 +80,30 @@ code {
 }
 
 .frosti-code {
-  @apply relative my-6 rounded-xl border border-base-300/20 bg-transparent overflow-hidden;
+  @apply relative my-6 rounded-xl overflow-hidden;
+  background: var(--frosti-code-shell-bg);
+  border: 1px solid var(--frosti-code-border);
+  box-shadow: var(--frosti-code-shadow);
 
   &-toolbar {
-    @apply sticky top-0 z-10 flex justify-between items-center px-4 py-2 bg-base-200 border-b border-base-content/20;
+    @apply sticky top-0 z-10 flex justify-between items-center px-4 py-2;
+    background: var(--frosti-code-toolbar-bg);
+    border-bottom: 1px solid var(--frosti-code-border);
+
     &-language {
       @apply text-sm font-semibold text-base-content/80;
+      letter-spacing: 0.02em;
     }
   }
 
   &-content {
-    @apply overflow-x-auto p-4 bg-transparent;
+    @apply overflow-x-auto p-4;
+    background: var(--frosti-code-content-bg);
 
     pre {
       @apply bg-transparent;
       counter-reset: line;
+      margin: 0;
     }
 
     .line {
@@ -73,9 +111,16 @@ code {
 
       &::before {
         content: counter(line);
-        @apply text-current mr-4 inline-block w-4 text-right;
+        @apply mr-4 inline-block w-4 text-right;
+        color: var(--frosti-code-line-number);
       }
     }
+  }
+}
+
+[data-theme-type="light"] {
+  .frosti-code-toolbar {
+    backdrop-filter: saturate(180%) blur(10px);
   }
 }
 
