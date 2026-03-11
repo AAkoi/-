@@ -10,6 +10,8 @@ import rehypeExternalLinks from "rehype-external-links";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
+import { remarkCodeLangAlias } from "./src/plugins/remark-code-lang-alias";
+import { remarkInlineHighlight } from "./src/plugins/remark-inline-highlight";
 import { CODE_THEME, USER_SITE } from "./src/config.ts";
 
 import updateConfig from "./src/integration/updateConfig.ts";
@@ -40,7 +42,7 @@ export default defineConfig({
     configFile: "./tailwind.config.mjs",
   }), playformCompress()],
   markdown: {
-    remarkPlugins: [remarkMath, remarkReadingTime],
+    remarkPlugins: [remarkMath, remarkCodeLangAlias, remarkInlineHighlight, remarkReadingTime],
     rehypePlugins: [rehypeKatex, [
       rehypeExternalLinks,
       {

@@ -55,6 +55,19 @@ code {
   color: var(--frosti-inline-code-color);
 }
 
+mark.frosti-mark {
+  @apply rounded-md px-1.5 py-0.5 font-semibold;
+  background: color-mix(in oklab, oklch(var(--wa)) 20%, white 80%);
+  color: color-mix(in oklab, oklch(var(--er)) 72%, black 28%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+[data-theme-type="dark"] mark.frosti-mark {
+  background: color-mix(in oklab, oklch(var(--wa)) 24%, black 76%);
+  color: color-mix(in oklab, oklch(var(--wa)) 60%, white 40%);
+}
+
 .scrollbar-none {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */

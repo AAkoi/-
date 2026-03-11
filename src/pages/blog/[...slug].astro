@@ -25,10 +25,11 @@ const displayDate = blog.data.pubDate ? dayjs(blog.data.pubDate).format(DATE_FOR
 const image = new URL(`/og/${blog.slug}.png`, Astro.site).toString();
 const url = new URL(`/blog/${blog.slug}`, Astro.url.origin);
 const allPosts = await getCollection("blog");
+const normalizedEntryId = blog.id.toLowerCase();
 
-const seriesPrefix = blog.slug.startsWith("UCOSIII/")
+const seriesPrefix = normalizedEntryId.startsWith("ucosiii/")
   ? "UCOSIII/"
-  : blog.slug.startsWith("stm32笔记/")
+  : normalizedEntryId.startsWith("stm32笔记/")
     ? "stm32笔记/"
     : null;
 
@@ -40,11 +41,11 @@ const seriesLabel = seriesPrefix === "UCOSIII/"
 
 const seriesPosts = seriesPrefix
   ? allPosts
-      .filter((post) => !post.data.draft && post.slug.startsWith(seriesPrefix))
+      .filter((post) => !post.data.draft && post.id.toLowerCase().startsWith(seriesPrefix.toLowerCase()))
       .sort((a, b) => new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime())
   : [];
 
-const currentSeriesIndex = seriesPosts.findIndex((post) => post.slug === blog.slug);
+const currentSeriesIndex = seriesPosts.findIndex((post) => post.id === blog.id);
 const prevSeriesPost = currentSeriesIndex > 0 ? seriesPosts[currentSeriesIndex - 1] : null;
 const nextSeriesPost = currentSeriesIndex >= 0 && currentSeriesIndex < seriesPosts.length - 1
   ? seriesPosts[currentSeriesIndex + 1]
@@ -99,9 +100,11 @@ const nextSeriesPost = currentSeriesIndex >= 0 && currentSeriesIndex < seriesPos
                 {
                   prevSeriesPost
                     ? (
-                        <a href={`/blog/${prevSeriesPost.slug}`} class="rounded-xl border border-base-300/30 bg-base-100 p-4 transition hover:border-primary/40 hover:-translate-y-0.5">
-                          <p class="text-xs text-base-content/60">上一篇</p>
-                          <p class="mt-1 font-medium text-base-content">{prevSeriesPost.data.title}</p>
+                        <a href={`/blog/${prevSeriesPost.slug}`} class="btn h-auto min-h-0 justify-start rounded-xl border-base-300/30 bg-base-100 px-4 py-4 text-left transition hover:border-primary/40 hover:-translate-y-0.5">
+                          <div>
+                            <p class="text-xs text-base-content/60">上一篇</p>
+                            <p class="mt-1 font-medium text-base-content">{prevSeriesPost.data.title}</p>
+                          </div>
                         </a>
                       )
                     : <div class="rounded-xl border border-dashed border-base-300/30 p-4 text-sm text-base-content/50">已经是本专栏第一篇</div>
@@ -109,9 +112,11 @@ const nextSeriesPost = currentSeriesIndex >= 0 && currentSeriesIndex < seriesPos
                 {
                   nextSeriesPost
                     ? (
-                        <a href={`/blog/${nextSeriesPost.slug}`} class="rounded-xl border border-base-300/30 bg-base-100 p-4 transition hover:border-primary/40 hover:-translate-y-0.5">
-                          <p class="text-xs text-base-content/60">下一篇</p>
-                          <p class="mt-1 font-medium text-base-content">{nextSeriesPost.data.title}</p>
+                        <a href={`/blog/${nextSeriesPost.slug}`} class="btn btn-primary h-auto min-h-0 justify-start rounded-xl px-4 py-4 text-left">
+                          <div>
+                            <p class="text-xs text-primary-content/80">下一篇</p>
+                            <p class="mt-1 font-medium text-primary-content">{nextSeriesPost.data.title}</p>
+                          </div>
                         </a>
                       )
                     : <div class="rounded-xl border border-dashed border-base-300/30 p-4 text-sm text-base-content/50">已经是本专栏最后一篇</div>
