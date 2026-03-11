@@ -24,6 +24,31 @@ const { Content, remarkPluginFrontmatter, headings } = await blog.render();
 const displayDate = blog.data.pubDate ? dayjs(blog.data.pubDate).format(DATE_FORMAT) : "";
 const image = new URL(`/og/${blog.slug}.png`, Astro.site).toString();
 const url = new URL(`/blog/${blog.slug}`, Astro.url.origin);
+const allPosts = await getCollection("blog");
+
+const seriesPrefix = blog.slug.startsWith("UCOSIII/")
+  ? "UCOSIII/"
+  : blog.slug.startsWith("stm32笔记/")
+    ? "stm32笔记/"
+    : null;
+
+const seriesLabel = seriesPrefix === "UCOSIII/"
+  ? "UCOSIII 专栏"
+  : seriesPrefix === "stm32笔记/"
+    ? "STM32 专栏"
+    : null;
+
+const seriesPosts = seriesPrefix
+  ? allPosts
+      .filter((post) => !post.data.draft && post.slug.startsWith(seriesPrefix))
+      .sort((a, b) => new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime())
+  : [];
+
+const currentSeriesIndex = seriesPosts.findIndex((post) => post.slug === blog.slug);
+const prevSeriesPost = currentSeriesIndex > 0 ? seriesPosts[currentSeriesIndex - 1] : null;
+const nextSeriesPost = currentSeriesIndex >= 0 && currentSeriesIndex < seriesPosts.length - 1
+  ? seriesPosts[currentSeriesIndex + 1]
+  : null;
 ---
 
 <BaseLayout
@@ -59,6 +84,42 @@ const url = new URL(`/blog/${blog.slug}`, Astro.url.origin);
           word={remarkPluginFrontmatter.totalCharCount}
           time={remarkPluginFrontmatter.readingTime}
         />
+        {
+          seriesLabel && (
+            <div class="not-prose mt-8 rounded-2xl border border-base-300/30 bg-base-200/40 p-5">
+              <div class="mb-4 flex items-center justify-between gap-3">
+                <div>
+                  <p class="text-sm font-semibold text-primary">{seriesLabel}</p>
+                  <p class="text-sm text-base-content/70">
+                    第 {currentSeriesIndex + 1} 篇 / 共 {seriesPosts.length} 篇
+                  </p>
+                </div>
+              </div>
+              <div class="grid gap-3 md:grid-cols-2">
+                {
+                  prevSeriesPost
+                    ? (
+                        <a href={`/blog/${prevSeriesPost.slug}`} class="rounded-xl border border-base-300/30 bg-base-100 p-4 transition hover:border-primary/40 hover:-translate-y-0.5">
+                          <p class="text-xs text-base-content/60">上一篇</p>
+                          <p class="mt-1 font-medium text-base-content">{prevSeriesPost.data.title}</p>
+                        </a>
+                      )
+                    : <div class="rounded-xl border border-dashed border-base-300/30 p-4 text-sm text-base-content/50">已经是本专栏第一篇</div>
+                }
+                {
+                  nextSeriesPost
+                    ? (
+                        <a href={`/blog/${nextSeriesPost.slug}`} class="rounded-xl border border-base-300/30 bg-base-100 p-4 transition hover:border-primary/40 hover:-translate-y-0.5">
+                          <p class="text-xs text-base-content/60">下一篇</p>
+                          <p class="mt-1 font-medium text-base-content">{nextSeriesPost.data.title}</p>
+                        </a>
+                      )
+                    : <div class="rounded-xl border border-dashed border-base-300/30 p-4 text-sm text-base-content/50">已经是本专栏最后一篇</div>
+                }
+              </div>
+            </div>
+          )
+        }
       </div>
     </div>
   </MainCard>

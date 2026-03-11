@@ -1,14 +1,16 @@
 ---
 title: "STM32 笔记：PWM"
 description: "记录 STM32 定时器 PWM 的频率计算、GPIO 复用、通道启动与占空比控制。"
-pubDate: "2026-03-07"
+pubDate: "2026-01-25"
 draft: false
 categories:
   - 嵌入式
+  - STM32专栏
 tags:
   - STM32
   - PWM
   - TIM
+  - STM32专栏
 ---
 
 1 配置PSC和ARR → 确定PWM频率
